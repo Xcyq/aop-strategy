@@ -87,6 +87,7 @@ public class Version2Impl implements IVersion{
 调用（单元测试）
 
 ```java
+private ThreadLocalRoutingKeysHolder routingKeysHolder = new ThreadLocalRoutingKeysHolder();
 private AnnotationConfigApplicationContext context = null;
 
 @Before
@@ -98,17 +99,17 @@ public void before() {
 public void testStage1() {
     Ctrl bean = context.getBean(Ctrl.class);
 
-    StrategyThreadLocal.put("v1");
+    routingKeysHolder.addRoutingKey("v1");
     Assert.assertEquals("v1", bean.version());
-    StrategyThreadLocal.removeAll();
+    routingKeysHolder.removeAllRoutingKeys();
 
-    StrategyThreadLocal.put("v2");
+    routingKeysHolder.addRoutingKey("v2");
     Assert.assertEquals("v2", bean.version());
-    StrategyThreadLocal.removeAll();
+    routingKeysHolder.removeAllRoutingKeys();
 
-    StrategyThreadLocal.put("v1");
+    routingKeysHolder.addRoutingKey("v1");
     Assert.assertEquals("v1", bean.version());
-    StrategyThreadLocal.removeAll();
+    routingKeysHolder.removeAllRoutingKeys();
 }
 ```
 
