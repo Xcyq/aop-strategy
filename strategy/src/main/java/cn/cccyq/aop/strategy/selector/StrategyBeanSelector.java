@@ -11,6 +11,12 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 为路由键找到匹配的逻辑处理Bean，以供调用
+ *
+ * @author cyq
+ * @since 2023-02-19 12:12:44
+ */
 public class StrategyBeanSelector {
 
     private final ListableBeanFactory beanFactory;
@@ -38,8 +44,8 @@ public class StrategyBeanSelector {
         for (Object bean : beansOfType.values()) {
             Class<?> noproxyClass = AopUtils.getTargetClass(bean);
             if (!StrategyAnnotationUtil.isAnnotatedStrategy(noproxyClass)) {
-               // 即使都实现了相同的接口也可能没有加上策略注解
-               continue;
+                // 即使都实现了相同的接口也可能没有加上策略注解
+                continue;
             }
 
             List<String[]> annotatedRoutingKeys = StrategyAnnotationUtil.getAnnotatedRoutingKeys(noproxyClass);

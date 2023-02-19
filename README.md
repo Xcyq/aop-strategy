@@ -1,5 +1,5 @@
 # aop-strategy
-A tools for strategy coding based on spring-aop in Java
+A tool for strategy coding based on spring-aop in Java
 
 基于spring-aop实现的策略化类调用
 

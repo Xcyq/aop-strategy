@@ -8,6 +8,8 @@ import org.springframework.aop.support.AopUtils;
 import java.lang.reflect.Method;
 
 /**
+ * 默认的策略化方法拦截器
+ *
  * @author cyq
  * @since 2023-01-27 21:34:55
  */
